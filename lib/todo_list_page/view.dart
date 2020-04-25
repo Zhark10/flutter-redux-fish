@@ -8,6 +8,7 @@ import 'state.dart';
 Widget buildView(PageState state, Dispatch dispatch, ViewService viewService) {
   final ListAdapter adapter = viewService.buildAdapter();
   return Scaffold(
+    backgroundColor: Color.fromRGBO(0, 0, 0, 0.8),
     appBar: AppBar(
       backgroundColor: state.themeColor,
       title: const Text('ToDoList'),
@@ -32,7 +33,7 @@ Widget buildView(PageState state, Dispatch dispatch, ViewService viewService) {
       notchMargin: 5,
       shape: CircularNotchedRectangle(),
       color: state.themeColor,
-      child: Container(height: 50.0)
+      child: Container(height: 60.0)
     ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     body: Container(

@@ -3,6 +3,7 @@ import 'package:fish_redux/fish_redux.dart';
 class ReportState implements Cloneable<ReportState> {
   int total;
   int done;
+  int theme;
 
   ReportState({this.total = 0, this.done = 0});
 

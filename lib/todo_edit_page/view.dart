@@ -6,7 +6,9 @@ import 'state.dart';
 
 Widget buildView(
     TodoEditState state, Dispatch dispatch, ViewService viewService) {
+  const light = Color.fromRGBO(235, 235, 235, 0.5);
   return Scaffold(
+    backgroundColor: Color.fromRGBO(0, 0, 0, 0.8),
     appBar: AppBar(
       backgroundColor: state.themeColor,
       title: const Text('Todo'),
@@ -30,13 +32,13 @@ Widget buildView(
               children: <Widget>[
                 Container(
                   child: const Text('Title:',
-                      style: TextStyle(color: Colors.black, fontSize: 20.0)),
+                      style: TextStyle(color: light, fontSize: 20.0)),
                   width: 56.0,
                   alignment: AlignmentDirectional.topEnd,
                 ),
                 Expanded(
                     child: Container(
-                  padding: const EdgeInsets.all(8.0),
+                  color: light,
                   margin: const EdgeInsets.only(left: 8.0),
                   child: new TextFormField(
                       controller: state.nameEditController,
@@ -54,19 +56,19 @@ Widget buildView(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  child: const Text('desc:',
-                      style: TextStyle(color: Colors.black, fontSize: 20.0)),
+                  child: const Text('Desc:',
+                      style: TextStyle(color: light, fontSize: 20.0)),
                   width: 56.0,
                   alignment: AlignmentDirectional.topEnd,
                 ),
                 Expanded(
                     child: Container(
-                  color: const Color(0xFFE0E0E0),
+                  color: light,
                   padding: const EdgeInsets.all(8.0),
                   margin: const EdgeInsets.only(left: 8.0),
                   child: EditableText(
                       controller: state.descEditController,
-                      backgroundCursorColor: const Color(0xFFE0E0E0),
+                      backgroundCursorColor: light,
                       maxLines: 10,
                       focusNode: state.focusNodeDesc,
                       style:
@@ -86,11 +88,12 @@ Widget buildView(
       backgroundColor: state.themeColor,
     ),
     bottomNavigationBar: BottomAppBar(
-      notchMargin: 5,
-      shape: CircularNotchedRectangle(),
-      color: state.themeColor,
-      child: Container(height: 50.0)
-    ),
+        notchMargin: 5,
+        shape: CircularNotchedRectangle(),
+        color: state.themeColor,
+        child: Container(
+          height: 50.0,
+        )),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
   );
 }

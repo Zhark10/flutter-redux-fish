@@ -10,70 +10,44 @@ Widget buildView(
   ViewService viewService,
 ) {
   return Container(
-    padding: const EdgeInsets.all(8.0),
-    child: GestureDetector(
-      child: Column(
-        children: <Widget>[
-          GestureDetector(
-            child: Container(
-              height: 36.0,
-              color: state.isDone ? Colors.green : Colors.red,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    child: const Icon(Icons.label_outline),
-                    margin: const EdgeInsets.all(8.0),
-                  ),
-                  Expanded(
-                      child: Text(
-                    state.title ?? '',
-                    maxLines: 1,
-                    style: const TextStyle(color: Colors.white, fontSize: 18.0),
-                  )),
-                  GestureDetector(
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 16.0),
-                      child: (() => state.isDone
-                          ? const Icon(Icons.check_box)
-                          : const Icon(Icons.check_box_outline_blank))(),
-                    ),
-                    onTap: () {
-                      dispatch(ToDoActionCreator.doneAction(state.uniqueId));
-                    },
-                  )
-                ],
-              ),
-              alignment: AlignmentDirectional.centerStart,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
-            color: const Color(0xFFE0E0E0),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                    child: Container(
-                  child: Text(
-                    state.desc ?? '',
-                    style: const TextStyle(color: Colors.black, fontSize: 16.0),
-                  ),
-                )),
-                GestureDetector(
-                  child: Container(
-                    child: const Icon(Icons.edit),
-                  ),
-                  onTap: () {
-                    dispatch(ToDoActionCreator.onEditAction(state.uniqueId));
-                  },
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-      onLongPress: () {
-        dispatch(ToDoActionCreator.onRemoveAction(state.uniqueId));
-      },
+    color: Color.fromRGBO(235, 235, 235, 0.2),
+    margin: EdgeInsets.all(2),
+      child: ListTile(
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+    leading: Container(
+      padding: EdgeInsets.only(right: 12.0),
+      decoration: new BoxDecoration(
+          border: new Border(
+              right: new BorderSide(width: 1.0, color: Colors.white24))),
+      child: Icon(Icons.autorenew, color: Colors.white),
     ),
-  );
+    title: Text(
+      state.title,
+      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    ),
+    subtitle: Row(
+      children: <Widget>[
+        // Expanded(
+        //     flex: 1,
+        //     child: Container(
+        //       child: LinearProgressIndicator(
+        //           backgroundColor: Color.fromRGBO(235, 235, 235, 0.5),
+        //           value: 0.6,
+        //           valueColor: AlwaysStoppedAnimation(Colors.green)),
+        //     )),
+        Expanded(
+          child: Padding(
+              padding: EdgeInsets.all(0),
+              child: Text(state.desc,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ))),
+        )
+      ],
+    ),
+    trailing: Icon(Icons.edit_attributes, color: Colors.white, size: 30.0),
+    onTap: () {
+      dispatch(ToDoActionCreator.onEditAction(state.uniqueId));
+    },
+  ));
 }

@@ -17,28 +17,10 @@ void _init(Action action, Context<PageState> ctx) {
   final List<ToDoState> initToDos = <ToDoState>[
     ToDoState(
       uniqueId: '0',
-      title: 'Hello world',
-      desc: 'Learn how to program.',
+      title: 'Post for example',
+      desc: 'I don`t know i should write here',
       isDone: true,
     ),
-    ToDoState(
-      uniqueId: '1',
-      title: 'Hello Flutter',
-      desc: 'Learn how to build a flutter application.',
-      isDone: true,
-    ),
-    ToDoState(
-      uniqueId: '2',
-      title: 'How Fish Redux',
-      desc: 'Learn how to use Fish Redux in a flutter application.',
-      isDone: false,
-    ),
-    ToDoState(
-      uniqueId: '3',
-      title: 'New post',
-      desc: 'Just do it.',
-      isDone: false,
-    )
   ];
 
   ctx.dispatch(PageActionCreator.initToDosAction(initToDos));
