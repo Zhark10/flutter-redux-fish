@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action, Page;
+import 'package:sample/todo_edit_page/action.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -10,6 +11,16 @@ Widget buildView(PageState state, Dispatch dispatch, ViewService viewService) {
     appBar: AppBar(
       backgroundColor: state.themeColor,
       title: const Text('ToDoList'),
+      actions: <Widget>[
+        Container(
+          margin: const EdgeInsets.all(8.0),
+          child: IconButton(
+              icon: const Icon(Icons.color_lens),
+              onPressed: () {
+                dispatch(ToDoEditActionCreator.onChangeTheme());
+              }),
+        ),
+      ],
     ),
     floatingActionButton: FloatingActionButton(
       onPressed: () => dispatch(PageActionCreator.onAddAction()),

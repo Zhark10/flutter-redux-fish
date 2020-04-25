@@ -81,10 +81,16 @@ Widget buildView(
     ),
     floatingActionButton: FloatingActionButton(
       onPressed: () => dispatch(ToDoEditActionCreator.onDone()),
-      tooltip: 'Done',
       child: const Icon(Icons.done),
+      tooltip: 'Done',
       backgroundColor: state.themeColor,
     ),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    bottomNavigationBar: BottomAppBar(
+      notchMargin: 5,
+      shape: CircularNotchedRectangle(),
+      color: state.themeColor,
+      child: Container(height: 50.0)
+    ),
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
   );
 }

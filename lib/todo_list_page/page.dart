@@ -20,8 +20,8 @@ class ToDoListPage extends Page<PageState, Map<String, dynamic>> {
               slots: <String, Dependent<PageState>>{
                 'report': ReportConnector() + ReportComponent()
               }),
-          // middleware: <Middleware<PageState>>[
-          //   logMiddleware(tag: 'ToDoListPage'),
-          // ],
+          middleware: <Middleware<PageState>>[
+            logMiddleware(tag: 'ToDoListPage'),
+          ],
         );
 }
