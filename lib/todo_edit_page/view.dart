@@ -6,7 +6,7 @@ import 'state.dart';
 
 Widget buildView(
     TodoEditState state, Dispatch dispatch, ViewService viewService) {
-  const light = Color.fromRGBO(235, 235, 235, 0.5);
+  const light = Color.fromRGBO(235, 235, 235, 0.8);
   return Scaffold(
     backgroundColor: Color.fromRGBO(0, 0, 0, 0.8),
     appBar: AppBar(
@@ -38,10 +38,14 @@ Widget buildView(
                 ),
                 Expanded(
                     child: Container(
-                  color: light,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: state.themeColor,
+                  ),
                   margin: const EdgeInsets.only(left: 8.0),
                   child: new TextFormField(
                       controller: state.nameEditController,
+                      style: TextStyle(color: light),
                       decoration:
                           InputDecoration(border: OutlineInputBorder())),
                 ))
@@ -63,16 +67,18 @@ Widget buildView(
                 ),
                 Expanded(
                     child: Container(
-                  color: light,
-                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: state.themeColor,
+                  ),
+                  padding: const EdgeInsets.all(16.0),
                   margin: const EdgeInsets.only(left: 8.0),
                   child: EditableText(
                       controller: state.descEditController,
-                      backgroundCursorColor: light,
+                      backgroundCursorColor: state.themeColor,
                       maxLines: 10,
                       focusNode: state.focusNodeDesc,
-                      style:
-                          const TextStyle(color: Colors.black, fontSize: 16.0),
+                      style: const TextStyle(color: light, fontSize: 16.0),
                       cursorColor: Colors.yellow),
                 ))
               ],
@@ -81,12 +87,6 @@ Widget buildView(
         ],
       ),
     ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () => dispatch(ToDoEditActionCreator.onDone()),
-      child: const Icon(Icons.done),
-      tooltip: 'Done',
-      backgroundColor: state.themeColor,
-    ),
     bottomNavigationBar: BottomAppBar(
         notchMargin: 5,
         shape: CircularNotchedRectangle(),
@@ -94,6 +94,12 @@ Widget buildView(
         child: Container(
           height: 50.0,
         )),
+    floatingActionButton: FloatingActionButton(
+      onPressed: () => dispatch(ToDoEditActionCreator.onDone()),
+      child: const Icon(Icons.done),
+      tooltip: 'Done',
+      backgroundColor: state.themeColor,
+    ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
   );
 }

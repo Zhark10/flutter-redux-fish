@@ -15,10 +15,10 @@ Reducer<GlobalState> buildReducer() {
 }
 
 List<Color> _colors = <Color>[
-  Colors.green,
-  Colors.red,
-  Colors.black,
-  Colors.blue
+  Color.fromRGBO(97, 48, 48, 1),
+  Color.fromRGBO(34, 66, 22, 1),
+  Color.fromRGBO(74, 58, 28, 1),
+  Color.fromRGBO(66, 28, 74, 1),
 ];
 
 GlobalState _onchangeThemeColor(GlobalState state, Action action) {
