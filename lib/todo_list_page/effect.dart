@@ -32,6 +32,12 @@ void _init(Action action, Context<PageState> ctx) {
       title: 'How Fish Redux',
       desc: 'Learn how to use Fish Redux in a flutter application.',
       isDone: false,
+    ),
+    ToDoState(
+      uniqueId: '3',
+      title: 'New post',
+      desc: 'Just do it.',
+      isDone: false,
     )
   ];
 

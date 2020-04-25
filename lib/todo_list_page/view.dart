@@ -11,6 +11,19 @@ Widget buildView(PageState state, Dispatch dispatch, ViewService viewService) {
       backgroundColor: state.themeColor,
       title: const Text('ToDoList'),
     ),
+    floatingActionButton: FloatingActionButton(
+      onPressed: () => dispatch(PageActionCreator.onAddAction()),
+      child: const Icon(Icons.add),
+      tooltip: 'Add',
+      backgroundColor: state.themeColor,
+    ),
+    bottomNavigationBar: BottomAppBar(
+      notchMargin: 5,
+      shape: CircularNotchedRectangle(),
+      color: state.themeColor,
+      child: Container(height: 50.0)
+    ),
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     body: Container(
       child: Column(
         children: <Widget>[
@@ -21,11 +34,6 @@ Widget buildView(PageState state, Dispatch dispatch, ViewService viewService) {
                   itemCount: adapter.itemCount))
         ],
       ),
-    ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () => dispatch(PageActionCreator.onAddAction()),
-      tooltip: 'Add',
-      child: const Icon(Icons.add),
     ),
   );
 }
