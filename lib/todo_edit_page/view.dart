@@ -10,6 +10,16 @@ Widget buildView(
     appBar: AppBar(
       backgroundColor: state.themeColor,
       title: const Text('Todo'),
+      actions: <Widget>[
+        Container(
+          margin: const EdgeInsets.all(8.0),
+          child: IconButton(
+              icon: const Icon(Icons.color_lens),
+              onPressed: () {
+                dispatch(ToDoEditActionCreator.onChangeTheme());
+              }),
+        ),
+      ],
     ),
     body: Container(
       padding: const EdgeInsets.all(16.0),
@@ -19,38 +29,23 @@ Widget buildView(
             child: Row(
               children: <Widget>[
                 Container(
-                  child: const Text('title:',
+                  child: const Text('Title:',
                       style: TextStyle(color: Colors.black, fontSize: 20.0)),
                   width: 56.0,
                   alignment: AlignmentDirectional.topEnd,
                 ),
                 Expanded(
                     child: Container(
-                  color: const Color(0xFFE0E0E0),
                   padding: const EdgeInsets.all(8.0),
                   margin: const EdgeInsets.only(left: 8.0),
-                  child: EditableText(
-                    controller: state.nameEditController,
-                    focusNode: state.focusNodeName,
-                    autofocus: true,
-                    style: const TextStyle(color: Colors.black, fontSize: 16.0),
-                    cursorColor: Colors.yellow,
-                    backgroundCursorColor: const Color(0xFFFFF59D),
-                  ),
+                  child: new TextFormField(
+                      controller: state.nameEditController,
+                      decoration:
+                          InputDecoration(border: OutlineInputBorder())),
                 ))
               ],
             ),
           ),
-          RaisedButton(
-              padding: const EdgeInsets.only(
-                  left: 20.0, top: 10.0, right: 20.0, bottom: 10.0),
-              color: Colors.blue,
-              child: const Text('Change theme',
-                  style: TextStyle(fontSize: 18),
-                  overflow: TextOverflow.ellipsis),
-              onPressed: () {
-                dispatch(ToDoEditActionCreator.onChangeTheme());
-              }),
           Expanded(
               child: Container(
             margin: const EdgeInsets.only(top: 32.0),
@@ -88,6 +83,7 @@ Widget buildView(
       onPressed: () => dispatch(ToDoEditActionCreator.onDone()),
       tooltip: 'Done',
       child: const Icon(Icons.done),
+      backgroundColor: state.themeColor,
     ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
   );
